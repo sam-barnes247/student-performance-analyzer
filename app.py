@@ -120,3 +120,12 @@ st.write(f"🏆 **Top student:** {top_student}")
 st.write(f"📉 **Lowest-scoring student:** {lowest_student}")
 st.write(f"👥 **Students analyzed:** {len(filtered_df)}")
 st.write(f"✅ **Pass rate:** {pass_rate:.1f}%")
+# Download analyzed data
+csv_data = filtered_df.to_csv(index=False).encode("utf-8")
+
+st.download_button(
+    label="📥 Download Analyzed CSV",
+    data=csv_data,
+    file_name="analyzed_student_data.csv",
+    mime="text/csv"
+)
